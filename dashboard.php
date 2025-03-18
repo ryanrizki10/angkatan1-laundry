@@ -1,5 +1,6 @@
 <?php 
 session_start();
+ob_start();
 include 'koneksi.php';
 $queryCustomer = mysqli_query($koneksi, "SELECT * FROM customers ORDER BY id DESC");
 $rowCustomer = mysqli_fetch_all($queryCustomer, MYSQLI_ASSOC);
