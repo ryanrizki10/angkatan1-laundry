@@ -43,7 +43,7 @@ if(isset($_GET['delete'])){
                                 <td><?php echo $row['customer_phone'] ?></td>
                                 <td><?php echo $row['customer_address'] ?></td>
                                 <td>
-                                    <a href="?page-add-customer&edit=<?php echo $row['id']?>" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="?page=add-customer&edit=<?php echo $row['id']?>" class="btn btn-primary btn-sm">Edit</a>
                                     <a href="?page=customer&delete=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure??')" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
