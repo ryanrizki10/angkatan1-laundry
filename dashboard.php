@@ -41,6 +41,7 @@ $rowCustomer = mysqli_fetch_all($queryCustomer, MYSQLI_ASSOC);
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+    
 
     <!-- =======================================================
   * Template Name: NiceAdmin
@@ -106,6 +107,12 @@ $rowCustomer = mysqli_fetch_all($queryCustomer, MYSQLI_ASSOC);
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.add-row').click(function () {
+           alert('Testing');
+        });
+    </script>
 
 </body>
 
