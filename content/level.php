@@ -28,9 +28,6 @@ if(isset($_GET['delete'])){
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>
-                                
-                            </th>
                             <th>Nama</th>
                             <th></th>
                         </tr>
