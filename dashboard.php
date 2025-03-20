@@ -110,7 +110,13 @@ $rowCustomer = mysqli_fetch_all($queryCustomer, MYSQLI_ASSOC);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('.add-row').click(function () {
-           alert('Testing');
+           alert('Testing');<?php 
+session_start();
+ob_start();
+require_once 'koneksi.php';
+$queryCustomer = mysqli_query($koneksi, "SELECT * FROM customers ORDER BY id DESC");
+$rowCustomer = mysqli_fetch_all($queryCustomer, MYSQLI_ASSOC);
+?>
         });
     </script>
 
