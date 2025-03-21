@@ -12,7 +12,7 @@ if(isset($_GET['delete'])){
     $delete = mysqli_query ($koneksi,"UPDATE FROM trans_order SET deleted_at = 1 WHERE id = '$id'");
     header("location:?page=trans-order&notif=success");
 }
-
+    
 ?>
 
 

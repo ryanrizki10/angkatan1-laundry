@@ -38,8 +38,21 @@ $id = isset($_GET['edit']) ? $_GET['edit'] : '';
 $queryEdit = mysqli_query($koneksi, "SELECT * FROM users WHERE id = '$id'");
 $rowEdit = mysqli_fetch_assoc($queryEdit);
 
-$queryLevels = mysqli_query($koneksi, "SELECT * FROM levels ORDER BY id DESC");
-$rowLevels = mysqli_fetch_all($queryLevels, MYSQLI_ASSOC);
+$queryCustomers = mysqli_query($koneksi, "SELECT * FROM levels ORDER BY id DESC");
+$rowCustomers = mysqli_fetch_all($queryCustomers, MYSQLI_ASSOC);
+
+
+// TR032125001
+$queryTrans = mysqli_query($koneksi, "SELECT max(id) as id_trans FROM trans_order");
+$rowTrans = mysqli_fetch_assoc($queryTrans);
+$id_trans = $rowTrans["id_trans"];
+$id_trans++;
+
+$kode_transaksi = "TR" . date("mdy") . sprintf("%01s", $id_trans);
+
+// Service
+$queryServices = mysqli_query($koneksi, "SELECT * FROM services ORDER BY id DESC");
+$rowServices = mysqli_fetch_all($queryServices, MYSQLI_ASSOC); 
 
 
 
@@ -60,7 +73,8 @@ $rowLevels = mysqli_fetch_all($queryLevels, MYSQLI_ASSOC);
                                 <label for="">Transaction Code</label>
                             </div>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" name="trans_code" readonly>
+                            <input type="text" class="form-control" name="trans_code" value="<?php echo $kode_transaksi; ?>" readonly>
+
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -71,7 +85,20 @@ $rowLevels = mysqli_fetch_all($queryLevels, MYSQLI_ASSOC);
                                 <input type="date" class="form-control" name="order_date">
                             </div>
                         </div>
-                       
+                        <div class="mb-3 row">
+                            <div class="col-sm-3">
+                                <label for="">Service</label>
+                            </div>
+                            <div class="col-sm-5">
+                            <select name="" id="id_service" class="form-control">
+                                <option value="">Choose Service</option>
+                                <?php foreach($rowServices as $rowService): ?>
+                                    <option value="<?php echo $rowService['id'] ?>"><?php echo $rowService['service_name'] ?></option>
+                                <?php endforeach ?>
+                            </select>
+
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-6">
                     <div class="mb-3 row">
@@ -81,7 +108,9 @@ $rowLevels = mysqli_fetch_all($queryLevels, MYSQLI_ASSOC);
                             <div class="col-sm-5">
                                 <select name="id_customer" class="form-control" id="">
                                     <option value="">Choose Customer</option>
-                                    <option value=""></option>
+                                    <?php foreach  ($rowCustomers as $rowCustomer): ?>
+                                    <option value="><?php echo $rowCustomer['id'] ?>"><?php echo $rowCustomer['customer_name'] ?></option>
+                                    <?php endforeach ?>
                                 </select>
                             </div>
                         </div>
@@ -106,14 +135,10 @@ $rowLevels = mysqli_fetch_all($queryLevels, MYSQLI_ASSOC);
                                     <th>Service</th>
                                     <th>Qty</th>
                                     <th>Notes</th>
-                                    <th>
-
-                                    </th>
+                                    <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>

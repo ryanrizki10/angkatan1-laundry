@@ -110,14 +110,32 @@ $rowCustomer = mysqli_fetch_all($queryCustomer, MYSQLI_ASSOC);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('.add-row').click(function () {
-           alert('Testing');<?php 
-session_start();
-ob_start();
-require_once 'koneksi.php';
-$queryCustomer = mysqli_query($koneksi, "SELECT * FROM customers ORDER BY id DESC");
-$rowCustomer = mysqli_fetch_all($queryCustomer, MYSQLI_ASSOC);
-?>
+            let service_name = $('#id_service').text()
+            let newRow = "";
+            newRow += "<tr>"
+            newRow += `<td> ${id_service} </td>`;
+            newRow += "<td><input class='form-control' name='qty[]' type='number' > </td>";
+            newRow += "<td><input class='form-control' name='notes[]' type='text' > </td>";
+            
+            newRow += "<td><button type='button' class='btn btn-success btn-sm remove'>Remove</button></td>";
+            newRow += "</tr>"
+
+            $('.table-order tbody').append(newRow);
+
+            $('.remove').click(function () {
+                $(this).closest('tr').remove();
+                
+            })
+
         });
+//            alert('Testing');<?php 
+// session_start();
+// ob_start();
+// require_once 'koneksi.php';
+// $queryCustomer = mysqli_query($koneksi, "SELECT * FROM customers ORDER BY id DESC");
+// $rowCustomer = mysqli_fetch_all($queryCustomer, MYSQLI_ASSOC);
+// ?>
+//         });
     </script>
 
 </body>
