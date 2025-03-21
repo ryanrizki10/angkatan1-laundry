@@ -66,6 +66,7 @@ $rowServices = mysqli_fetch_all($queryServices, MYSQLI_ASSOC);
             </div>
             <div class="card-body mt-3">
               <form action="" method="POST">
+                <input type="text" id="service_price">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3 row">
@@ -133,6 +134,7 @@ $rowServices = mysqli_fetch_all($queryServices, MYSQLI_ASSOC);
                             <thead>
                                 <tr>
                                     <th>Service</th>
+                                    <th>Price</th>
                                     <th>Qty</th>
                                     <th>Notes</th>
                                     <th></th>
