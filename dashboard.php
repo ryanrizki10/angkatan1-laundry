@@ -110,10 +110,10 @@ $rowCustomer = mysqli_fetch_all($queryCustomer, MYSQLI_ASSOC);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('.add-row').click(function () {
-            let service_name = $('#id_service').text()
+            let service_name = $('#id_service').find("option:selected").text();
             let newRow = "";
             newRow += "<tr>"
-            newRow += `<td> ${id_service} </td>`;
+            newRow += `<td> ${service_name} </td>`;
             newRow += "<td><input class='form-control' name='qty[]' type='number' > </td>";
             newRow += "<td><input class='form-control' name='notes[]' type='text' > </td>";
             
